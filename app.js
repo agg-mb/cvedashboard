@@ -20,7 +20,7 @@ function displayData(data) {
                 <h2>${vulnerabilities.cveID}</h2>
                 <p><strong>Published Date:</strong> ${vulnerabilities['dateAdded']}</p>
                 <p><strong>Software:</strong> ${vulnerabilities.product}</p>
-                <p><strong>Description:</strong> <a href="${vulnerabilities.shortDescription}" target="_blank">${vulnerabilities.Reference}</a></p>
+                <p><strong>Description:</strong> <a href="${vulnerabilities.shortDescription}" target="_blank">${vulnerabilities.shortDescription}</a></p>
             </div>
         `;
     });
