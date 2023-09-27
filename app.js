@@ -1,8 +1,6 @@
-// Endpoint URL
-const ENDPOINT = 'https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json';
+const DATA_FILE = "./data.json";  // Relative path to data.json file
 
-// Fetch the data
-fetch(ENDPOINT)
+fetch(DATA_FILE)
     .then(response => response.json())
     .then(data => {
         displayData(data);
@@ -10,6 +8,7 @@ fetch(ENDPOINT)
     .catch(error => {
         console.error('Error fetching the CVE data:', error);
     });
+
 
 function displayData(data) {
     const dashboard = document.getElementById('dashboard');
@@ -28,4 +27,3 @@ function displayData(data) {
 
     dashboard.innerHTML = content;
 }
-
