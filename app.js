@@ -9,18 +9,19 @@ fetch(DATA_FILE)
         console.error('Error fetching the CVE data:', error);
     });
 
-
 function displayData(data) {
+    const vulnerabilitiesArray = data.vulnerabilities; // Target the array inside the object
+
     const dashboard = document.getElementById('dashboard');
     let content = '<h1>Known Exploited CVEs</h1>';
 
-    data.forEach(vulnerabilities => {
+    vulnerabilitiesArray.forEach(vulnerability => {
         content += `
             <div class="cve-entry">
-                <h2>${vulnerabilities.cveID}</h2>
-                <p><strong>Published Date:</strong> ${vulnerabilities['dateAdded']}</p>
-                <p><strong>Software:</strong> ${vulnerabilities.product}</p>
-                <p><strong>Description:</strong> ${vulnerabilities.shortDescription}</p>
+                <h2>${vulnerability.cveID}</h2>
+                <p><strong>Published Date:</strong> ${vulnerability['dateAdded']}</p>
+                <p><strong>Software:</strong> ${vulnerability.product}</p>
+                <p><strong>Description:</strong> <a href="${vulnerability.shortDescription}" target="_blank">${vulnerability.shortDescription}</a></p>
             </div>
         `;
     });
