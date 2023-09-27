@@ -12,17 +12,19 @@ fetch(DATA_FILE)
 function displayData(data) {
     const vulnerabilitiesArray = data.vulnerabilities || [];
 
-    // Sorting the vulnerabilitiesArray by dateAdded from newest to oldest
-    vulnerabilitiesArray.sort((a, b) => {
-        const dateA = new Date(a.dateAdded);
-        const dateB = new Date(b.dateAdded);
-        return dateB - dateA; // For descending order
+    // Filtering the vulnerabilities from the last 7 days
+    const oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+    
+    const recentVulnerabilities = vulnerabilitiesArray.filter(vulnerability => {
+        const vulnerabilityDate = new Date(vulnerability.dateAdded);
+        return vulnerabilityDate >= oneWeekAgo;
     });
 
     const dashboard = document.getElementById('dashboard');
-    let content = '<h1>Known Exploited CVEs</h1>';
+    let content = '<h1>Known Exploited CVEs from Last 7 Days</h1>';
 
-    vulnerabilitiesArray.forEach(vulnerability => {
+    recentVulnerabilities.forEach(vulnerability => {
         content += `
             <div class="cve-entry">
                 <h2>${vulnerability.cveID}</h2>
