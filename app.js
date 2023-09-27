@@ -12,17 +12,24 @@ fetch(DATA_FILE)
 function displayData(data) {
     const vulnerabilitiesArray = data.vulnerabilities || [];
 
-    // Filtering the vulnerabilities from the last 7 days
+    // Filtering the vulnerabilities from the last 14 days
     const oneWeekAgo = new Date();
-    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 14);
     
     const recentVulnerabilities = vulnerabilitiesArray.filter(vulnerability => {
         const vulnerabilityDate = new Date(vulnerability.dateAdded);
         return vulnerabilityDate >= oneWeekAgo;
     });
 
+    // Sorting the recent vulnerabilities by dateAdded from newest to oldest
+    recentVulnerabilities.sort((a, b) => {
+        const dateA = new Date(a.dateAdded);
+        const dateB = new Date(b.dateAdded);
+        return dateB - dateA; // For descending order
+    });
+
     const dashboard = document.getElementById('dashboard');
-    let content = '<h1>Known Exploited CVEs from Last 7 Days</h1>';
+    let content = '<h1>Known Exploited CVEs from Last 14 Days</h1>';
 
     recentVulnerabilities.forEach(vulnerability => {
         content += `
