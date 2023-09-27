@@ -1,5 +1,12 @@
+/* Path to data */
 const DATA_FILE = "./data.json";  // Relative path to data.json file
 
+/* Automatic scrolling */
+const dashboard = document.getElementById('dashboard');
+let scrollDirection = 1; // 1 for downward, -1 for upward
+const scrollSpeed = 1; // Adjust for faster or slower scroll
+
+/* Fetch data */
 fetch(DATA_FILE)
     .then(response => response.json())
     .then(data => {
@@ -9,6 +16,7 @@ fetch(DATA_FILE)
         console.error('Error fetching the CVE data:', error);
     });
 
+/* Display the data */
 function displayData(data) {
     const vulnerabilitiesArray = data.vulnerabilities || [];
 
@@ -31,6 +39,7 @@ function displayData(data) {
     const dashboard = document.getElementById('dashboard');
     let content = '<h1>Known Exploited CVEs from Last 14 Days</h1>';
 
+    // Generating the content
     recentVulnerabilities.forEach(vulnerability => {
         content += `
             <div class="cve-entry">
@@ -41,6 +50,26 @@ function displayData(data) {
             </div>
         `;
     });
-
     dashboard.innerHTML = content;
 }
+
+/* Automatically scrolling */
+function autoScroll() {
+    if (dashboard.scrollHeight <= dashboard.clientHeight) {
+        // If all content is visible, no need to scroll
+        return;
+    }
+
+    // Check if we've scrolled to the bottom
+    if (dashboard.scrollTop + dashboard.clientHeight >= dashboard.scrollHeight) {
+        scrollDirection = -1;
+    }
+    // Check if we've scrolled back to the top
+    else if (dashboard.scrollTop === 0) {
+        scrollDirection = 1;
+    }
+
+    dashboard.scrollTop += scrollSpeed * scrollDirection;
+}
+
+setInterval(autoScroll, 100); // Adjust interval for faster or slower scroll

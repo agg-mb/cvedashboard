@@ -1,3 +1,9 @@
+/* Scrolling */
+#dashboard {
+    height: 100vh;  /* Adjust to your desired viewport height */
+    overflow: hidden;
+}
+
 /* Base styling for dark mode */
 body {
     background-color: #181818;
