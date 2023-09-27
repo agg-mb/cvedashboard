@@ -21,7 +21,7 @@ function displayData(data) {
                 <h2>${vulnerability.cveID}</h2>
                 <p><strong>Published Date:</strong> ${vulnerability['dateAdded']}</p>
                 <p><strong>Software:</strong> ${vulnerability.product}</p>
-                <p><strong>Description:</strong> <a href="${vulnerability.shortDescription}" target="_blank">${vulnerability.shortDescription}</a></p>
+                <p><strong>Description:</strong> ${vulnerability.shortDescription}</p>
             </div>
         `;
     });
