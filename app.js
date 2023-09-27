@@ -25,9 +25,9 @@ function displayData(data) {
     vulnerabilitiesArray.forEach(vulnerability => {
         content += `
             <div class="cve-entry">
-                <p>${vulnerability.cveID}</p>
+                <h2>${vulnerability.cveID}</h2>
                 <p><strong>Published Date:</strong> ${vulnerability['dateAdded']}</p>
-                <p><strong>Product:</strong> ${vulnerability.product}</p>
+                <p><strong>vulnerabilityName:</strong> ${vulnerability.vulnerabilityName}</p>
                 <p><strong>Description:</strong> ${vulnerability.shortDescription}</p>
             </div>
         `;
