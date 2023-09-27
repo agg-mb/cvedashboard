@@ -10,7 +10,14 @@ fetch(DATA_FILE)
     });
 
 function displayData(data) {
-    const vulnerabilitiesArray = data.vulnerabilities; // Target the array inside the object
+    const vulnerabilitiesArray = data.vulnerabilities || [];
+
+    // Sorting the vulnerabilitiesArray by dateAdded from newest to oldest
+    vulnerabilitiesArray.sort((a, b) => {
+        const dateA = new Date(a.dateAdded);
+        const dateB = new Date(b.dateAdded);
+        return dateB - dateA; // For descending order
+    });
 
     const dashboard = document.getElementById('dashboard');
     let content = '<h1>Known Exploited CVEs</h1>';
@@ -18,7 +25,7 @@ function displayData(data) {
     vulnerabilitiesArray.forEach(vulnerability => {
         content += `
             <div class="cve-entry">
-                <h2>${vulnerability.cveID}</h2>
+                <p>${vulnerability.cveID}</p>
                 <p><strong>Published Date:</strong> ${vulnerability['dateAdded']}</p>
                 <p><strong>Software:</strong> ${vulnerability.product}</p>
                 <p><strong>Description:</strong> ${vulnerability.shortDescription}</p>
