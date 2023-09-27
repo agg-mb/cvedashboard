@@ -26,8 +26,8 @@ function displayData(data) {
         content += `
             <div class="cve-entry">
                 <h2>${vulnerability.cveID}</h2>
+                <p><strong>Vendor:</strong> ${vulnerability.vendorProject}</p>
                 <p><strong>Published Date:</strong> ${vulnerability['dateAdded']}</p>
-                <p><strong>vulnerabilityName:</strong> ${vulnerability.vulnerabilityName}</p>
                 <p><strong>Description:</strong> ${vulnerability.shortDescription}</p>
             </div>
         `;
