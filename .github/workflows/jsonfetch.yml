@@ -2,7 +2,7 @@ name: Update JSON Data
 
 on:
   schedule:
-    - cron: '25 12 * * *'  # Runs daily at midnight
+    - cron: '35 12 * * *'  # Runs daily at midnight
 
 jobs:
   fetch-and-commit:
