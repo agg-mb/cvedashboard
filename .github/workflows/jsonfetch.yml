@@ -2,7 +2,7 @@ name: Update JSON Data
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Runs daily at midnight
+    - cron: '25 12 * * *'  # Runs daily at midnight
 
 jobs:
   fetch-and-commit:
@@ -23,3 +23,5 @@ jobs:
         git add -A
         git diff --quiet && git diff --staged --quiet || git commit -m "Updated JSON data"
         git push
+      env:
+          FIRSTPAT: ${{ secrets.FIRSTPAT }}
