@@ -25,4 +25,4 @@ jobs:
         git diff --quiet && git diff --staged --quiet || git commit -m "Updated JSON data"
         git push
       env:
-        FIRSTPAT: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
