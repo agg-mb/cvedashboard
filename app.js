@@ -20,9 +20,9 @@ fetch(DATA_FILE)
 function displayData(data) {
     const vulnerabilitiesArray = data.vulnerabilities || [];
 
-    // Filtering the vulnerabilities from the last 7 days
+    // Filtering the vulnerabilities from the last 14 days
     const oneWeekAgo = new Date();
-    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 14);
     
     const recentVulnerabilities = vulnerabilitiesArray.filter(vulnerability => {
         const vulnerabilityDate = new Date(vulnerability.dateAdded);
@@ -37,7 +37,7 @@ function displayData(data) {
     });
 
     const dashboard = document.getElementById('dashboard');
-    let content = '<h1>Known Exploited CVEs from Last 7 Days</h1>';
+    let content = '<h1>Known Exploited CVEs from Last 14 Days</h1>';
 
     // Generating the content
     recentVulnerabilities.forEach(vulnerability => {
