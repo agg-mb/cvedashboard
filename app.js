@@ -41,12 +41,27 @@ function displayData(data) {
 
     // Generating the content
     recentVulnerabilities.forEach(vulnerability => {
+        let notesLinks = '';
+        
+        // Check if the notes field exists and has content
+        if (vulnerability.notes) {
+            // Use regex to extract all URLs
+            const urls = vulnerability.notes.match(/https?:\/\/[^\s,]+/g);
+            
+            if (urls) {
+                urls.forEach(url => {
+                    notesLinks += `<a href="${url}" target="_blank" rel="noopener noreferrer">View Details</a> `;
+                });
+            }
+        }
+    
         content += `
             <div class="cve-entry">
                 <h2>${vulnerability.cveID}</h2>
                 <p><strong>Vendor:</strong> ${vulnerability.vendorProject}</p>
                 <p><strong>Published Date:</strong> ${vulnerability['dateAdded']}</p>
                 <p><strong>Description:</strong> ${vulnerability.shortDescription}</p>
+                <p><strong>Notes:</strong> ${notesLinks}</p>
             </div>
         `;
     });
