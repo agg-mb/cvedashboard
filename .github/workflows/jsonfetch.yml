@@ -2,7 +2,7 @@ name: Update JSON Data
 
 on:
   schedule:
-    - cron: '35 12 * * *'  # Runs daily at midnight
+    - cron: '15 13 * * *'  # Runs daily at midnight
 
 jobs:
   fetch-and-commit:
@@ -20,8 +20,9 @@ jobs:
       run: |
         git config --global user.name 'GitHub Action'
         git config --global user.email 'action@github.com'
+        git remote set-url origin https://x-access-token:${FIRSTPAT}@github.com/agg-mb/cvedashboard.git
         git add -A
         git diff --quiet && git diff --staged --quiet || git commit -m "Updated JSON data"
         git push
       env:
-          FIRSTPAT: ${{ secrets.FIRSTPAT }}
+        FIRSTPAT: ${{ secrets.FIRSTPAT }}
