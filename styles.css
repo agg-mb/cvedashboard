@@ -1,7 +1,7 @@
 /* Scrolling */
 #dashboard {
     height: 100vh;  /* Adjust to your desired viewport height */
-    overflow: hidden;
+    overflow: auto;
 }
 
 /* Base styling for dark mode */
