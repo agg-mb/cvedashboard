@@ -2,8 +2,7 @@ name: Update JSON Data
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Runs daily at midnight
-
+    - cron: '0 * * * *'  # Runs every hour
 jobs:
   fetch-and-commit:
     runs-on: ubuntu-latest
