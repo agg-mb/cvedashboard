@@ -37,7 +37,7 @@ function displayData(data) {
     });
 
     const dashboard = document.getElementById('dashboard');
-    let content = '<h1>Known Exploited CVEs from Last 14 Days</h1>';
+    let content = '';
 
     // Generating the content
     recentVulnerabilities.forEach(vulnerability => {
