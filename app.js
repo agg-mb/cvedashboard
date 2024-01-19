@@ -65,7 +65,7 @@ function displayData(data) {
             </div>
         `;
     });
-    dashboard.innerHTML = content;
+    dashboard.textContent = content;
 }
 
 /* Automatically scrolling */
