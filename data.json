@@ -1,7 +1,7 @@
 {
     "title": "CISA Catalog of Known Exploited Vulnerabilities",
-    "catalogVersion": "2024.01.22",
-    "dateReleased": "2024-01-22T15:00:24.1583Z",
+    "catalogVersion": "2024.01.23",
+    "dateReleased": "2024-01-23T12:44:05.0112Z",
     "count": 1070,
     "vulnerabilities": [
         {
@@ -12829,7 +12829,7 @@
             "shortDescription": "Ivanti Endpoint Manager Mobile (EPMM) and MobileIron Core contain an authentication bypass vulnerability that allows unauthorized users to access restricted functionality or resources of the application.",
             "requiredAction": "Apply mitigations per vendor instructions or discontinue use of the product if mitigations are unavailable.",
             "dueDate": "2024-02-08",
-            "knownRansomwareCampaignUse": "Unknown",
+            "knownRansomwareCampaignUse": "Known",
             "notes": "https:\/\/forums.ivanti.com\/s\/article\/CVE-2023-35082-Remote-Unauthenticated-API-Access-Vulnerability-in-MobileIron-Core-11-2-and-older"
         },
         {
