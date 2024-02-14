@@ -1,7 +1,7 @@
 {
     "title": "CISA Catalog of Known Exploited Vulnerabilities",
     "catalogVersion": "2024.02.14",
-    "dateReleased": "2024-02-14T17:29:16.0931Z",
+    "dateReleased": "2024-02-14T18:40:05.2833Z",
     "count": 1079,
     "vulnerabilities": [
         {
@@ -4854,7 +4854,7 @@
         },
         {
             "cveID": "CVE-2018-0159",
-            "vendorProject": "CIsco",
+            "vendorProject": "Cisco",
             "product": "IOS Software and Cisco IOS XE Software",
             "vulnerabilityName": "Cisco IOS and XE Software Internet Key Exchange Version 1 Denial-of-Service Vulnerability",
             "dateAdded": "2022-03-03",
