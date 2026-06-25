@@ -37,7 +37,8 @@ function displayData(data) {
     });
 
     const dashboard = document.getElementById('dashboard');
-
+    
+    // DEPRECATED; replaced with escapeHtml()
     function sanitizeHTML(str) {
         var temp = document.createElement('div');
         temp.innerHTML = str;
@@ -76,22 +77,23 @@ function displayData(data) {
             
             if (urls) {
                 urls.forEach(url => {
-                    notesLinks += `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a><br>`;
+                    const safeUrl = escapeHtml(url);
+                    notesLinks += `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer">${safeUrl}</a><br>`;
                 });
             }
         }
     
         content += `
             <div class="cve-entry">
-                <h2>${vulnerability.cveID}</h2>
-                <p><strong>Vendor:</strong> ${vulnerability.vendorProject}</p>
-                <p><strong>Published Date:</strong> ${vulnerability['dateAdded']}</p>
-                <p><strong>Description:</strong> ${vulnerability.shortDescription}</p>
+                <h2>${escapeHtml(vulnerability.cveID)}</h2>
+                <p><strong>Vendor:</strong> ${escapeHtml(vulnerability.vendorProject)}</p>
+                <p><strong>Published Date:</strong> ${escapeHtml(vulnerability.dateAdded)}</p>
+                <p><strong>Description:</strong> ${escapeHtml(vulnerability.shortDescription)}</p>
                 <p><strong>Notes:</strong><br>${notesLinks}</p>
             </div>
         `;
     });
-    dashboard.innerHTML = sanitizeHTML(content);
+    dashboard.innerHTML = content;
 }
 
 /* Automatically scrolling */
@@ -111,6 +113,16 @@ function autoScroll() {
     }
 
     dashboard.scrollTop += scrollSpeed * scrollDirection;
+}
+
+// Escape funktion for HTML strings
+function escapeHtml(str) {
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 
 setInterval(autoScroll, 100); // Adjust interval for faster or slower scroll
